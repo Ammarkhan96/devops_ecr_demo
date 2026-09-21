@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevOps Demo Application</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card-bg: #161b22;
+      --border: #30363d;
+      --text: #c9d1d9;
+      --accent: #58a6ff;
+      --success: #2ea043;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px;
+      width: 480px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: rgba(46, 160, 67, 0.15);
+      color: var(--success);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--success);
+      border-radius: 50%;
+    }
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 24px;
+      color: #fff;
+    }
+    p.subtitle {
+      margin: 0 0 24px 0;
+      color: #8b949e;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .pipeline-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .tag {
+      background-color: #21262d;
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+    .btn {
+      width: 100%;
+      background-color: #238636;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .btn:hover {
+      background-color: #2ea043;
+    }
+    #status-box {
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent);
+      transition: opacity 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="badge">
+      <span class="pulse-dot"></span>
+      CI/CD Pipeline v2.0 Active
+    </div>
+
+    <h1>DevOps Demo Application</h1>
+    <p class="subtitle">Built with Docker & Nginx, deployed automatically to Amazon ECR via GitHub Actions.</p>
+
+    <div class="pipeline-tags">
+      <span class="tag">Docker</span>
+      <span class="tag">GitHub Actions</span>
+      <span class="tag">Amazon ECR</span>
+      <span class="tag">eu-north-1</span>
+    </div>
+
+    <button class="btn" onclick="testHealth()">Verify Deployment Status</button>
+
+    <div id="status-box"></div>
+  </div>
+
+  <script>
+    function testHealth() {
+      const box = document.getElementById("status-box");
+      box.innerText = "🚀 Container online & responding! Deployed via commit: " + new Date().toLocaleTimeString();
+    }
+  </script>
+
+</body>
+</html>
